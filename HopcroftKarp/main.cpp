@@ -7,11 +7,6 @@ typedef unsigned short DataType; //change correspond format speciefiers in scanf
 typedef Vector<DataType>::Iterator Iterator;
 const DataType INF = USHRT_MAX; //UINT_MAX
 
-bool bfs(Vector<DataType>&pairPeople, Vector<DataType>&pairBikes, Vector<DataType>&people, Vector<DataType>&bikes, Vector<DataType>&distances, Vector<Vector<DataType>>&choices);
-bool dfs(DataType person, Vector<DataType>&pairPeople, Vector<DataType>&pairBikes, Vector<DataType>&distances, Vector<Vector<DataType>>&choices);
-int hopcroft_karp(Vector<DataType>&pairPeople, Vector<DataType>&pairBikes, Vector<DataType>&people, Vector<DataType>&bikes, Vector<DataType>&distances, Vector<Vector<DataType>>&choices);
-
-
 bool bfs(Vector<DataType>&pairPeople, Vector<DataType>&pairBikes, Vector<DataType>&people, Vector<DataType>&bikes, Vector<DataType>&distances, Vector<Vector<DataType>>&choices) {
 	Queue<DataType> queue;
 	for (Iterator person = people.begin(); person != people.end(); ++person)
@@ -50,6 +45,7 @@ bool dfs(DataType person, Vector<DataType>&pairPeople, Vector<DataType>&pairBike
 }
 
 int hopcroft_karp(Vector<DataType>&pairPeople, Vector<DataType>&pairBikes, Vector<DataType>&people, Vector<DataType>&bikes, Vector<DataType>&distances, Vector<Vector<DataType>>&choices) {
+
 	for (Iterator u = people.begin(); u != people.end(); ++u)
 		pairPeople[*u] = NULL;
 	for (Iterator v = bikes.begin(); v != bikes.end(); ++v)
@@ -83,4 +79,5 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	printf("%hu", hopcroft_karp(pairPeople, pairBikes, people, bikes, distances, choices));
+	return 0;
 }
